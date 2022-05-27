@@ -106,7 +106,7 @@ class Board:
         if updated_clicked_tile.get_is_bomb() and not updated_clicked_tile.get_marked() and event.button == 1:
             return True
         # If the clicked tile has no nearby bombs, all the nearby safe tiles are automatically uncovered.
-        elif updated_clicked_tile.get_nearby_bombs() == 0 and not updated_clicked_tile.get_marked():
+        elif updated_clicked_tile.get_nearby_bombs() == 0 and not updated_clicked_tile.get_marked() and event.button == 1:
             self.update_nearby_safe_tiles(updated_clicked_tile)
 
         return False
