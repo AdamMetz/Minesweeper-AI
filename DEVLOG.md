@@ -1,14 +1,17 @@
 # Devlog
 
-## May 17, 2022
-
+## May
+<details closed>
+<summary>May 17, 2022</summary>
 Started the project, currently just making the game itself.
 
 The board being drawn, and random bomb generation, is what's completed so far.
 
 ![alt text](https://github.com/AdamMetz/Minesweeper-AI/blob/main/devlog-images/05-17-22/board.PNG)
+</details>
 
-## May 18, 2022
+<details closed>
+<summary>May 18, 2022</summary>
 
 Added a bomb detection for each Tile, so each Tile can see how many bombs are surrounding it.
 
@@ -17,16 +20,24 @@ it has to be done so in an algorithmic way so that every Tile has at least one s
 Not sure why I thought this at the time ^
 
 ![alt text](https://github.com/AdamMetz/Minesweeper-AI/blob/main/devlog-images/05-18-22/board.PNG)
+</details>
 
-## May 26, 2022
+<details closed>
+<summary>May 16, 2022</summary>
 
 The construction of the game itself is pretty much complete now. Did a ton of reorganizing, moving each class into seperate files,
 and moved all variable accessing to getters and setters.
 
 ![alt text](https://github.com/AdamMetz/Minesweeper-AI/blob/main/devlog-images/05-26-22/board.PNG)
+</details>
 
-## June 8, 2022
+## June
+<details closed>
+<summary>June 8, 2022</summary>
 
 Worked on touching up some of the code and improving the readability. Also adjusted the y offsets for grid generation, to 
 allow for the addition of a header at the top of the game window.
-Header to be implemented, will included a reset game button, and timer.
+Header to be implemented, will included a reset game button, timer, and bomb count.
+
+![alt text](https://github.com/AdamMetz/Minesweeper-AI/blob/main/devlog-images/06-08-22/board.PNG)
+</details>
