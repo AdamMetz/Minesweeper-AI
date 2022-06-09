@@ -20,27 +20,28 @@ class Board:
 
     # Generates the default game board. Board object that contains a list of Tile objects.
     def generate_board(self):
-        x = 0
-        y = 0
-        while x < constants.WIDTH:
-            while y < constants.HEIGHT:
-                row = constants.WIDTH//constants.IMAGE_PIXEL_WIDTH - (constants.WIDTH-x)//constants.IMAGE_PIXEL_WIDTH
-                col = constants.HEIGHT//constants.IMAGE_PIXEL_WIDTH - (constants.HEIGHT-y)//constants.IMAGE_PIXEL_WIDTH
+        x = 0 
+        y = 0 + constants.HEADER_HEIGHT
+        while y < constants.WINDOW_HEIGHT:
+            while x < constants.WINDOW_WIDTH:
+                curr_row_offset = (constants.WINDOW_HEIGHT-y)//constants.IMAGE_PIXEL_WIDTH
+                curr_col_offset = (constants.WINDOW_WIDTH-x)//constants.IMAGE_PIXEL_WIDTH
+                row = constants.MAX_ROW_COUNT - curr_row_offset
+                col = constants.MAX_COL_COUNT - curr_col_offset
                 self.add_tile(Tile(x, y, row, col))
-                y += constants.IMAGE_PIXEL_WIDTH            
-            x += constants.IMAGE_PIXEL_WIDTH
-            y = 0
+                x += constants.IMAGE_PIXEL_WIDTH            
+            y += constants.IMAGE_PIXEL_WIDTH
+            x = 0
         pygame.display.update()
 
     def add_tile(self, tile):
         # Add another row to tiles when needed.          Prevent extra row being added on final iteration.
-        if (tile.get_col()+1 == constants.WIDTH//constants.IMAGE_PIXEL_WIDTH) and (tile.get_row()+1 != constants.HEIGHT//constants.IMAGE_PIXEL_WIDTH):
+        if (tile.get_col()+1 == constants.MAX_COL_COUNT) and (tile.get_row()+1 != constants.MAX_ROW_COUNT):
             self.tiles.append([])
-        self.tiles[tile.row].append(tile)
+        self.tiles[tile.get_row()].append(tile)
 
     # Randomly selects tiles to be a bomb.
     def bomb_generation(self):
-        #num_of_tiles = (constants.HEIGHT//constants.IMAGE_PIXEL_WIDTH)**2
         remaining_bombs = constants.NUM_OF_BOMBS
         board_row_max_index = len(self.get_tiles()) - 1
         board_col_max_index = len(self.get_tiles()[0]) - 1

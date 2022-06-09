@@ -24,3 +24,9 @@ The construction of the game itself is pretty much complete now. Did a ton of re
 and moved all variable accessing to getters and setters.
 
 ![alt text](https://github.com/AdamMetz/Minesweeper-AI/blob/main/devlog-images/05-26-22/board.PNG)
+
+## June 8, 2022
+
+Worked on touching up some of the code and improving the readability. Also adjusted the y offsets for grid generation, to 
+allow for the addition of a header at the top of the game window.
+Header to be implemented, will included a reset game button, and timer.
