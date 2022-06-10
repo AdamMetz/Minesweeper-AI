@@ -24,8 +24,6 @@ class Game:
             if y_click_coordinate > 100:
                 board_row = (y_click_coordinate-constants.HEADER_HEIGHT)//constants.IMAGE_PIXEL_WIDTH
                 board_col = x_click_coordinate//constants.IMAGE_PIXEL_WIDTH
-                print(board_row)
-                print(board_col)
                 self.set_game_over(self.board.update_board(board_row, board_col, event))
 
         if self.get_game_over():

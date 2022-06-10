@@ -1,11 +1,14 @@
 import pygame
 import constants
 import random
+from header import Header
 from tile import Tile
 
 class Board:
     def __init__(self):
         self.tiles = [[]]
+        self.remaining_markers_count = constants.NUM_OF_BOMBS
+        self.header = Header(self.remaining_markers_count)
         self.initialize_board()
     
     # Getters
@@ -17,6 +20,7 @@ class Board:
         self.bomb_generation()
         self.set_neighbours()
         self.draw_board()
+        self.header.initialize_header()
 
     # Generates the default game board. Board object that contains a list of Tile objects.
     def generate_board(self):
@@ -102,13 +106,22 @@ class Board:
     # Updates the board provided a mouse event.
     # Returns True if the clicked tile was a bomb
     # Returns False otherwise
-    def update_board(self, clicked_row, clicked_col, event) -> bool:
+    def update_board(self, clicked_row, clicked_col, event):
+        pre_update_marked = self.tiles[clicked_row][clicked_col].get_marked()
         updated_clicked_tile = self.tiles[clicked_row][clicked_col].update_clicked_tile(event)
-        if updated_clicked_tile.get_is_bomb() and not updated_clicked_tile.get_marked() and event.button == 1:
-            return True
-        # If the clicked tile has no nearby bombs, all the nearby safe tiles are automatically uncovered.
-        elif updated_clicked_tile.get_nearby_bombs() == 0 and not updated_clicked_tile.get_marked() and event.button == 1:
-            self.update_nearby_safe_tiles(updated_clicked_tile)
+        if event.button == 1:
+            if updated_clicked_tile.get_is_bomb() and not updated_clicked_tile.get_marked():
+                return True
+            # If the clicked tile has no nearby bombs, all the nearby safe tiles are automatically uncovered.
+            elif updated_clicked_tile.get_nearby_bombs() == 0 and not updated_clicked_tile.get_marked():
+                self.update_nearby_safe_tiles(updated_clicked_tile)
+        
+        # Update header remaining marker count
+        elif event.button == 3:
+            if pre_update_marked == False:
+                self.header.decrement_remaining_marker_count()
+            else:
+                self.header.increment_remaining_marker_count()
 
         return False
 

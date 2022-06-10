@@ -89,6 +89,7 @@ class Tile:
 
     # Returns the updated tile
     def update_clicked_tile(self, event):
+        print(event)
         if event.button == 1 and not self.get_marked():
             self.set_clicked(True)
         elif event.button == 3 and not self.get_marked() and not self.get_clicked():

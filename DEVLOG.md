@@ -41,3 +41,11 @@ Header to be implemented, will included a reset game button, timer, and bomb cou
 
 ![alt text](https://github.com/AdamMetz/Minesweeper-AI/blob/main/devlog-images/06-08-22/board.PNG)
 </details>
+
+<details closed>
+<summary>June 9, 2022</summary>
+
+Worked on the header, timer will be next. Then it will be time to focus on the main component of the project, learning how to use/implement AI
+
+![alt text](https://github.com/AdamMetz/Minesweeper-AI/blob/main/devlog-images/06-09-22/board.PNG)
+</details>
